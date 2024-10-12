@@ -7,7 +7,7 @@ This repository aims at reporting my solutions to the challenges proposed by [Ha
 
 ## Script Description
 -----------
-[Script.py](./script.py) contains the compleated python challenges on the [HACKERRANK](https://www.hackerrank.com/) online service.
+[Script.py](./scripts.py) contains the compleated python challenges on the [HACKERRANK](https://www.hackerrank.com/) online service.
 
 It is divided into two main sections: Problem 1 and Problem 2.
 
