@@ -39,7 +39,7 @@ Each category contains multiple coding problems designed to enhance specific Pyt
 ### Example Structure
 
 
-Each section in script.py follows a consistent format for clarity and ease of understanding:
+Each section in [script.py](./scripts.py) follows a consistent format for clarity and ease of understanding:
 
 \# Name_Challenge_1 \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-
 
