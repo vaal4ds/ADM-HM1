@@ -3,7 +3,7 @@ This repository aims at reporting my solutions to the challenges proposed by [Ha
 
 ## Submission Details
 ---------------------
-[Submission_HackerRank.pdf](./Submission_HackerRank.pdf) includes the list of the submitted scripts, along with the scores achieved for each challenge. This PDF serves as a summary of successful solutions and their performance on the platform.
+[Submission_HackerRank.pdf](./Submissions _HackerRank.pdf) includes the list of the submitted scripts, along with the scores achieved for each challenge. This PDF serves as a summary of successful solutions and their performance on the platform.
 
 ## Script Description
 -----------
