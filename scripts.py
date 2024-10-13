@@ -19,7 +19,7 @@ import re
 import sys
 
 if __name__ == '__main__':
-    n = int( input().strip() )
+    n = int( input().strip() )  # Take input from the user, strip any extra whitespace, and convert it to an int
     
     if n<=100 and n>=1:
         if n % 2 == 1 or (n % 2 == 0 and n in range( 6, 21 ) ):
@@ -54,15 +54,19 @@ if __name__ == '__main__':
 if __name__ == '__main__':
     n = int(input() )
     for i in range( 0,n ):
-        print( i*i )
+        print( i*i )             # Print the square of the current value of i 
 
 
 # Write a function
 
 def is_leap(year):
-    leap = False
+    # Initialize leap as False, assuming the year is not a leap year
+    leap = False    
+    # Check if the year is divisible by 4 (necessary condition for leap year)
     if year % 4 == 0:
         leap = True
+        # Check if the year is divisible by 100 but not by 400
+        # Years divisible by 100 are not leap years unless they are divisible by 400
         if year % 100 == 0 and year % 400 != 0:
             leap = False
     return leap
@@ -72,8 +76,10 @@ def is_leap(year):
 
 if __name__ == '__main__':
     n = int(input())
+    # Initialize an empty string to hold the concatenated result
     my_str = ""
     for i in range(1,n+1):
+        # Convert the current number i to a string and concatenate it to my_str
         my_str = my_str + str(i)
     print(my_str)
 
@@ -87,7 +93,12 @@ if __name__ == '__main__':
     y = int(input())
     z = int(input())
     n = int(input())
-    
+
+    # Create a list of all possible [i, j, k] combinations where:
+    # i is in the range 0 to x (inclusive)
+    # j is in the range 0 to y (inclusive)
+    # k is in the range 0 to z (inclusive)
+    # The sum of i, j, and k should NOT be equal to n (i + j + k != n)    
     my_list=[[i,j,k] for i in range(0,x+1)
     for j in range(0,y+1)
     for k in range(0,z+1)
@@ -100,8 +111,11 @@ if __name__ == '__main__':
 
 if __name__ == '__main__':
     n = int(input())
+    # Take input as a space-separated string of numbers, map them to integers, and convert them into a list
     arr = list(map(int, input().split()))
     highest = max(arr)
+    # Find the maximum number that is not equal to the highest (runner-up)
+    # Use a generator expression to filter out the highest number from the list and find the maximum of the remaining numbers
     runner_up = max(i for i in arr if i!=highest)
     print(runner_up)
 
@@ -109,16 +123,18 @@ if __name__ == '__main__':
 # Nested Lists
 
 if __name__ == '__main__':
-    
+    # Initialize an empty list to store [name, score] pairs
     my_list=[]
     for _ in range(int(input())):
         name = input()
         score = float(input())
         my_list.append([name,score])
-    
+    # Find the lowest score by taking the minimum of the second element (score) of each pair in my_list
     lowest_score = min( i[1] for i in my_list )
     second_ls =  min([i[1] for i in my_list if i[1] != lowest_score] )
+    # Create a sorted list of names where the student's score equals the second lowest score
     names=sorted(i[0] for i in my_list if i[1] == second_ls)
+    # Print each name in the list of names with the second lowest score, one name per line
     for i in names:
         print(i)
 
@@ -127,14 +143,16 @@ if __name__ == '__main__':
 
 if __name__ == '__main__':
     n = int(input())
+    # Initialize an empty dictionary to store student names as keys and their scores as values
     student_marks = {}
     for _ in range(n):
         name, *line = input().split()
-        scores = list(map(float, line))
+        scores = list(map(float, line))      # Convert the scores (which are strings) into a list of floats
         student_marks[name] = scores
     query_name = input()
-    
-    avg=round(sum(student_marks[query_name])/
+   
+    # Calculate the average score and round it to 2 decimal places
+    avg=round(sum(student_marks[query_name])/         
     len(student_marks[query_name]),2)
     print(f"{avg:.2f}")
 
@@ -146,6 +164,7 @@ if __name__ == '__main__':
     my_list=[]
     N = int(input())
     for i in range(N):
+        # Take the input command and split it into a list of strings
         x=input().split()
 
         if x[0]=='insert':
