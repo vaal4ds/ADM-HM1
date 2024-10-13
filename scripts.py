@@ -167,6 +167,7 @@ if __name__ == '__main__':
         # Take the input command and split it into a list of strings
         x=input().split()
 
+        # one if for each type of command
         if x[0]=='insert':
             my_list.insert(int(x[1]),int(x[2]))
         elif x[0]=='print':
@@ -197,13 +198,13 @@ if __name__ == '__main__':
 # sWAP cASE
 
 def swap_case(s):
-    x = ''
+    x = ''  # initialize new string in which we will copy the swapped chars of s
     for i in s:
         if i.isupper() == 1:
             i = i.lower()
         else:
             i = i.upper()
-        x = x+i
+        x = x+i  # add swapped char
     return x
   
 
@@ -218,6 +219,7 @@ def split_and_join(line):
 # What's Your Name?
 
 def print_full_name(first, last):
+    #format the output string using input variables and message
     x = f"Hello {first} {last}! You just delved into python."
     print(x)
 
@@ -225,6 +227,8 @@ def print_full_name(first, last):
 # Mutations
 
 def mutate_string(string, position, character):
+    # Replace the character at the specified position in the string with the new character
+    #by overwriting on string: slicing and concatenating with new character
     string=string[:position]+character+string[position+1:]
     return string
 
@@ -371,14 +375,16 @@ def minion_game(string):
     vowels = 'AEIOU'
     
     for i in range(len(s)):
+        # If the character is a vowel, calculate the score for Kevin
+        # All possible substrings starting at index i contribute to Kevin's score
         if s[i] in vowels:
-            #all possible subs starting at i are lens-i
+            #all possible subs starting at i are len(s)-i
             score_k+=len(s)-i
         else:
             score_s+=len(s)-i    
     
     if score_s > score_k:
-        out = f'Stuart {score_s}'
+        out = f'Stuart {score_s}'  #formatted string
     elif score_s < score_k:
         out = f'Kevin {score_k}'
     else:
@@ -390,13 +396,18 @@ def minion_game(string):
 
 def merge_the_tools(string, k):
     n=len(string)
+
+    # Loop through the string in chunks of size k
     for i in range(0,n,k):
+        # Extract a substring of length k starting at index i
         t_i=string[i:i+k]
+        # Initialize an empty string to store unique characters
         u_i = ''
+        # Initialize a set to keep track of seen characters
         seen = set()
         for j in t_i:
             if j not in seen:
-                u_i+=j
+                u_i+=j # Add the character to the unique string if not seen
                 seen.add(j)
         print(u_i)
 
@@ -406,7 +417,9 @@ def merge_the_tools(string, k):
 # Introduction to Sets
 
 def average(array):
+    # Convert the input array to a set to remove duplicate heights
     heights = set(array)
+    # Initialize a variable to hold the sum of unique heights
     hsum = 0
     for i in heights:
         hsum+=i
@@ -418,6 +431,7 @@ def average(array):
 
 import array as r
 n,m = map( int, ( input().split() ))
+# Create type 'i' array of integers from input
 arr=r.array('i', map(int, input().split() ))
 A=set(map( int, input().split() ))
 B=set(map( int, input().split() ))
@@ -439,6 +453,8 @@ N=int(input())
 listN=list(map(int,input().split() ))
 b=set(listN)
 
+#  symmetric difference consists of elements that are in either set a or set b, but not in both
+# so it is the union of the sets a-b and b-a
 simm_diff = sorted((a.difference(b)).union(b.difference(a)))
 
 for i in simm_diff:
@@ -536,8 +552,14 @@ print(sum(A))
 K = int(input())                           #size of each group
 room_no = list(map(int,input().split()))   #list of room numbers
 sum_all = sum(room_no)
+# Create a set from the room numbers to eliminate duplicates
 uniques = set(room_no)
 sum_uniques = sum(uniques)
+# Calculate the captain's room number using the given formula:
+#  K * sum_uniques: Total sum if each unique room number is counted K times
+# sum_all: The actual sum of all room numbers
+# (K * sum_uniques - sum_all): The total excess caused by duplicates
+# dividing by (K - 1) gives the captain's room number
 captain_room = (K*sum_uniques-sum_all)//(K-1)    
 print(captain_room)
 
@@ -564,7 +586,7 @@ for i in range(n):
         #N_i is a proprt subset of A if the set difference N_i\A is empty
         #and |N_i|<|A| (A must have at least one mor element)
         count+=1
-print(count == n)                               # A is a strict super set of all n sets if the condition is the loop is true for every N_i which means that count=n
+print(count == n)  # A is a strict super set of all n sets if the condition is the loop is true for every N_i which means that count=n
 
 
 # CCollections ------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -612,6 +634,12 @@ for l in B:
 from collections import namedtuple
 N, columns = int(input()), input().split()
 Student = namedtuple('Student', columns)
+# Calculate the average marks of the students
+# list comprehension to create a list of marks for each student
+# for each student input, create a Student object and extract the MARKS attribute
+# Convert the MARKS to an int and sum them
+# divide the total marks by N to get the average
+# round to 2 decimal places
 print(round(sum ([int(Student(*input().split()).MARKS) for i in range(N)]) / N , 2 ) )
 
 
@@ -944,7 +972,9 @@ import re
 N=int(input())
 for i in range(N):
     line=input()
+    # Replace '&&' with 'and' if it is surrounded by spaces
     out = re.sub(r'(?<= )&&(?= )', 'and', line)
+    # Replace '||' with 'or' if it is surrounded by spaces
     out = re.sub(r'(?<= )\|\|(?= )', 'or', out)
     print(out)
 
@@ -952,6 +982,7 @@ for i in range(N):
 # Validating Roman Numerals
 
 regex_pattern = r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$"	
+# ^ : start of the string, $ asserts the end of the string
 import re
 print(str(bool(re.match(regex_pattern, input()))))
 
